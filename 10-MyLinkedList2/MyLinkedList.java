@@ -1,11 +1,15 @@
 public class MyLinkedList {
     private Node head;
-
+    private Node tail;
     public MyLinkedList() {
-	head = new Node ("0"); 
+	head  = new Node ("0"); 
+	tail = null;
     }
     public void add (String d) {
 	Node tmp = new Node (d);
+
+
+
 	/*
         head.setNext(tmp);
 	We can't set head's next to tmp because head is null. 
@@ -14,11 +18,15 @@ public class MyLinkedList {
 	//head = tmp;
 	tmp.setNext(head.getNext());
 	head.setNext(tmp);
+	if(this.length() == 2)
+	    tail = tmp;     
 
     }
 
     //ADD METHOD
     public void add (int i, String s) {
+	if (this.length() == 1)
+	    return this.add(d);
 	Node tmp = head.getNext();
 	Node temp = new Node (s);
 	for (; i > 1; i--) {
@@ -27,6 +35,7 @@ public class MyLinkedList {
 	}
 	temp.setNext(tmp.getNext());
 	tmp.setNext(temp);
+
 
     }
 
@@ -62,6 +71,15 @@ public class MyLinkedList {
 	    System.out.println (" Passed the end! ");
 	}
 	return "";
+    }
+
+    //addLast
+    public String addLast (String s) {
+	Node tmp = head.getNext();
+	while (tmp.getNext() != null)
+	    tmp = tmp.getNext();
+	tmp.setNext( new Node (s));
+	return s;
     }
 
     //REMOVE

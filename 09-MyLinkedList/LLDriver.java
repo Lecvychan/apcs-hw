@@ -36,6 +36,8 @@ public class LLDriver {
 	System.out.println (L);
 	System.out.println(L.remove (20));
 	System.out.println (L);
+	System.out.println(L.remove (0));
+	System.out.println (L);
 
 	//Testing find 
 	System.out.println ("Testing find");

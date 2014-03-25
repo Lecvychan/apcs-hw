@@ -1,25 +1,34 @@
 public class MyLinkedList {
     private Node head;
-
+    private Node tail;
     public MyLinkedList() {
-	head = null; 
+	head  = new Node ("0"); 
+	tail = null;
     }
     public void add (String d) {
 	Node tmp = new Node (d);
+
+
+
 	/*
         head.setNext(tmp);
 	We can't set head's next to tmp because head is null. 
 	Just make a new node and set head to it.
 	*/
 	//head = tmp;
-	tmp.setNext(head);
-	head = tmp;
+	tmp.setNext(head.getNext());
+	head.setNext(tmp);
+	if(this.length() == 1)
+	    tail = tmp;     
+	System.out.println ("Tail: " + tail);
 
     }
 
     //ADD METHOD
     public void add (int i, String s) {
-	Node tmp = head;
+	if (this.length() == 1)
+	    this.add(s);
+	Node tmp = head.getNext();
 	Node temp = new Node (s);
 	for (; i > 1; i--) {
 	    tmp = tmp.getNext();
@@ -27,12 +36,16 @@ public class MyLinkedList {
 	}
 	temp.setNext(tmp.getNext());
 	tmp.setNext(temp);
+	if (temp.getNext().getNext() == null)
+	    tail = temp.getNext(); 
+	System.out.println ("Tail: " + tail);
+	
 
     }
 
     //GET
     public String get (int i) {
-	Node tmp = head;
+	Node tmp = head.getNext();
 	try{
 	for (int j = 0; j < i; j++) {
 	    tmp = tmp.getNext();
@@ -48,7 +61,7 @@ public class MyLinkedList {
 
     //Set 
     public String set (int i, String s) {
-	Node tmp = head;
+	Node tmp = head.getNext();
 	try{
 	for (int j = 0; j < i; j++) {
 	    tmp = tmp.getNext();
@@ -64,6 +77,18 @@ public class MyLinkedList {
 	return "";
     }
 
+    //addLast
+    public String addLast (String s) {
+	Node tmp = head.getNext();
+	Node end = new Node (s);
+	while (tmp.getNext() != null)
+	    tmp = tmp.getNext();
+	tmp.setNext(end);
+	tail = end;
+	System.out.println ("Tail: " + tail);
+	return s;
+    }
+
     //REMOVE
     public String remove (int i) {
 	Node tmp = head;
@@ -72,9 +97,16 @@ public class MyLinkedList {
 	for (int j = 1; j < i; j++){
 	    tmp = tmp.getNext();
     }
-	removed = tmp.getNext().getData();
-	tmp.setNext(tmp.getNext().getNext());
+	if (i== 0){
+	    removed = tmp.getNext().getData();
+	    tmp.setNext(tmp.getNext().getNext());
+	}
+	else{
+	    removed = tmp.getNext().getNext().getData();
+	    tmp.setNext(tmp.getNext().getNext().getNext());
+	}
 	return removed;
+	
 	}
 	catch (Exception e) {
 	    System.out.println (" Passed the end! ");
@@ -84,10 +116,10 @@ public class MyLinkedList {
 
     //Find
     public int find (String s) {
-	Node tmp = head;
+	Node tmp = head.getNext();
 	int index = 0;
 	try{
-	while (tmp.getNext() != null) {
+	while (tmp != null) {
 	    if (tmp.getData().equals (s))
 		return index;
 	    else {
@@ -104,7 +136,7 @@ public class MyLinkedList {
 
     //Length
     public int length (){
-	Node tmp = head;
+	Node tmp = head.getNext();
 	int count = 1;
 	if (tmp.equals (null))
 	    return 0;
@@ -117,7 +149,7 @@ public class MyLinkedList {
 	    
 	    
     public String toString () {
-	Node tmp = head;
+	Node tmp = head.getNext();
 	String s = "" + tmp ;
 	while (tmp.getNext()!= null) {
 	    tmp = tmp.getNext();

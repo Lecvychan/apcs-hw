@@ -1,11 +1,11 @@
 import java.util.*;
 import java.io.*;
 
-public class LLIterator <T> implements Iterator<T> {
+public class LLIterator <E> implements Iterator<E> {
 
-    public Node <T> current;
+    private Node <E> current;
 
-    public LLIterator (Node <T> n) {
+    public LLIterator (Node <E> n) {
 	current = n;
     }
 
@@ -13,11 +13,11 @@ public class LLIterator <T> implements Iterator<T> {
 
     //hasNext 
     public boolean hasNext() {
-	return (current.getNext() != null);
+	return current.getNext() != null;
     }
 
     //Next 
-    public T next () {
+    public E next () {
 	current = current.getNext();
 	return current.getData();
     }

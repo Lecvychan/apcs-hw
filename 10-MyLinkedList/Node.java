@@ -1,8 +1,8 @@
-public class Node<T> { 
-    private T data;
-    private Node <T>  next;
+public class Node<E> { 
+    private E data;
+    private Node <E>  next;
 
-    public Node (T d) {
+    public Node (E d) {
 	data = d;
 	next = null;
     }
@@ -10,16 +10,16 @@ public class Node<T> {
 	
     }
 
-    public void setData(T d) {
+    public void setData(E d) {
 	data = d;
     }
-    public T getData() {
+    public E getData() {
 	return data;
     }
-    public void setNext(Node<T> n) {
+    public void setNext(Node<E> n) {
 	next = n;
     }
-    public Node <T> getNext() {
+    public Node <E> getNext() {
 	return next;
     }
     public String toString () {

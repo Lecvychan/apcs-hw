@@ -1,24 +1,24 @@
-public class MyLinkedList<T> implements Iterable <T>{
-    private Node <T> head;
-    private Node <T> tail;
+public class MyLinkedList<E> implements Iterable <E>{
+    private Node <E> head;
+    private Node <E> tail;
 
 
     public MyLinkedList() {
-	head  = new Node <T>(); 
+	head  = new Node <E>(); 
 	tail = null;
     }
 
     //Iterator
-    public Iterator <T> iterator (){
-	return new LLIterator <T> (head);
+    public LLIterator  <E> iterator (){
+	return new LLIterator <E> (head);
     }
 
 
 
 
     //ADD
-    public void add (T d) {
-	Node<T> tmp = new Node (d);
+    public void add (E d) {
+	Node<E> tmp = new Node (d);
 
 
 
@@ -37,11 +37,11 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //ADD METHOD
-    public void add (int i, T s) {
+    public void add (int i, E s) {
 	if (this.length() == 1)
 	    this.add(s);
-	Node <T> tmp = head.getNext();
-	Node <T> temp = new Node<T> (s);
+	Node <E> tmp = head.getNext();
+	Node <E> temp = new Node<E> (s);
 	for (; i > 1; i--) {
 	    tmp = tmp.getNext();
 	    
@@ -56,8 +56,8 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //GET
-    public T get (int i) {
-	Node <T> tmp = head.getNext();
+    public E get (int i) {
+	Node <E> tmp = head.getNext();
 	try{
 	for (int j = 0; j < i; j++) {
 	    tmp = tmp.getNext();
@@ -73,14 +73,14 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //Set 
-    public T set (int i, T s) {
-	Node<T> tmp = head.getNext();
+    public E set (int i, E s) {
+	Node<E> tmp = head.getNext();
 	try{
 	for (int j = 0; j < i; j++) {
 	    tmp = tmp.getNext();
 	 
 	}
-	Node<T> temp = tmp;
+	Node<E> temp = tmp;
 	tmp.setData(s);
 	return temp.getData();
 	}
@@ -91,9 +91,9 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //addLast
-    public T addLast (T s) {
-	Node<T> tmp = head.getNext();
-	Node<T> end = new Node<T> (s);
+    public E addLast (E s) {
+	Node<E> tmp = head.getNext();
+	Node<E> end = new Node<E> (s);
 	while (tmp.getNext() != null)
 	    tmp = tmp.getNext();
 	tmp.setNext(end);
@@ -103,9 +103,9 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //REMOVE
-    public T remove (int i) {
-	Node<T> tmp = head;
-	T removed = null;
+    public E remove (int i) {
+	Node<E> tmp = head;
+	E removed = null;
 	try{
 	for (int j = 1; j < i; j++){
 	    tmp = tmp.getNext();
@@ -128,8 +128,8 @@ public class MyLinkedList<T> implements Iterable <T>{
     }
 
     //Find
-    public int find (T s) {
-	Node<T> tmp = head.getNext();
+    public int find (E s) {
+	Node<E> tmp = head.getNext();
 	int index = 0;
 	try{
 	while (tmp != null) {
@@ -149,7 +149,7 @@ public class MyLinkedList<T> implements Iterable <T>{
 
     //Length
     public int length (){
-	Node<T> tmp = head.getNext();
+	Node<E> tmp = head.getNext();
 	int count = 1;
 	if (tmp.equals (null))
 	    return 0;

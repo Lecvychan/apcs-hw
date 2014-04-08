@@ -1,34 +1,35 @@
-public class MyStack {
+ public class MyStack {
 
-    private double[] stack;
+    private String[] stack;
     private int top;
 
+
     public MyStack(){
-	stack = new double [10];
+	stack = new String [10];
 	top = -1;
     }
 
     public void grow () {
-	double [] times2 = new double [stack.length * 2];
+	String [] times2 = new String [stack.length * 2];
 	for (int i = 0; i <stack.length; i++) 
 	    stack = times2;
     }
 
-    public void push(double s){
+    public void push(String s){
 	top ++;
 	while (top >= stack.length) 
 	    this.grow();
 	stack[top] = s;
     }
 
-    public double pop() {
-	double ret = (stack[top]);
-	stack[top] = 0;
+    public String pop() {
+	String ret = new String (stack[top]);
+	stack[top] = null;
 	top --;
 	return ret;
     }
 
-    public double peek() {
+    public String peek() {
 	return stack[top];
 
     }
@@ -38,7 +39,7 @@ public class MyStack {
     }
 
     public boolean isEmpty() {
-	return stack[top]== 0;
+	return top==-1;
     }
 
     public String toString() {

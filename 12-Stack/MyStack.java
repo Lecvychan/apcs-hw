@@ -1,7 +1,8 @@
-public class MyStack {
+ public class MyStack {
 
     private String[] stack;
     private int top;
+
 
     public MyStack(){
 	stack = new String [10];
@@ -38,7 +39,7 @@ public class MyStack {
     }
 
     public boolean isEmpty() {
-	return stack[top]==null;
+	return top==-1;
     }
 
     public String toString() {

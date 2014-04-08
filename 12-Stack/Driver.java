@@ -2,7 +2,9 @@ public class Driver {
     public static void main(String[] args){
 	MyStack a = new MyStack();
 	a.push("one");
+	System.out.println(a);
 	a.push("two");
+	System.out.println(a);
 	a.push("three");
 	System.out.println(a);
 	while (!a.isEmpty()){
@@ -10,9 +12,10 @@ public class Driver {
 	}
 	a.push("Hello");
 	System.out.println(a.peek());
+	System.out.println(a);
 	a.push("world");
 	System.out.println(a.peek());
-
+	System.out.println(a);
 	
     }
     

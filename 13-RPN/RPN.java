@@ -3,68 +3,68 @@ import java.io.*;
 import java.util.Scanner;
 
 public class RPN {
-    private MyStack stack = new MyStack();
+    private Scanner sc;
+    private MyStack ms;
+    private int index;
+    private int a; 
+    private int b;
+   
+    public RPN () {
+	sc = new Scanner (System.in);
+	ms = new MyStack();
+	index = 0;
+	int a = 0;
+	int b = 0;
+    }
 
-    public String RPN (String s) {
-	int index = 0;
     
- 
-    
-    public void add() {
-	String ans = "";
-	for (int i = 0; !stack.isEmpty() && i < 2; i ++ )
-	    ans += stack.pop();
-	stack.push(ans+ "");
-    }
-    public void subtract () {
-	String ans = 0;
-	if (!stack.isEmpty())
-	    ans = stack.pop();
-	if (!stack.isEmpty())
-	    ans = stack.pop() - ans;
+    public String solve () {
+	String s = sc.nextLine();
+	for (int i = 0; i < s.length(); i++) {
+	    ms.push (s.substring(i, i + 1));
+	}
 
-	stack.push (ans);
-    }
-    public void multiply () {
-	String ans = 0;
-	if (!stack.isEmpty())
-	    ans = stack.pop();
-	if (!stack.isEmpty())
-	    ans *= stack.pop();
-	stack.push (ans);
-    }
-    public void divide () {
-	String ans = 0;
-	if (!stack.isEmpty())
-	    ans = stack.pop();
-	if (!stack.isEmpty())
-	    ans = stack.pop() / ans;
-	stack.push (ans);
-    }
+	while (index < s.length()){
+	    String frag = s.substring (index, index + 1);
+	    if (frag.equals("+")){
+		a = Integer.parseInt(ms.pop());
+		b = Integer.parseInt(ms.pop());
+		ms.push(""+(a+b));
+	    }
+	    else if (frag.equals("-")){
+		b = Integer.parseInt(ms.pop());
+		a = Integer.parseInt(ms.pop());
+		ms.push(""+(a-b));
+	    }
+	    else if (frag.equals("*")){
+		a = Integer.parseInt(ms.pop());
+		b = Integer.parseInt(ms.pop());
+		ms.push(""+(a*b));
+	    }
+	    else if (frag.equals("/")){
+		a = Integer.parseInt(ms.pop());
+		b = Integer.parseInt(ms.pop());
+		ms.push(""+(b/a));
+	    }
+	    else if (frag.equals(" ")){}
+	    else{
+		while (!s.substring(index+1,index+2).equals(" ")){
+		    index++;
+		    frag+=s.substring(index, index+1);
+		}
+		ms.push(frag);
+	    }
+	    index++;
+	}
 
-    public void solve () {
-
+	return ms.pop();
+    }
 
 
     public static void main (String [] args){
 	RPN rpn = new RPN();
+	System.out.println ("calculate: ");
+	System.out.println(rpn.solve());
 
-	Scanner scan = new Scanner (System.in);
-	String getNext;
-	while (true) {
-	    getNext = scan.nextLine();
-	    if (getNext.equals ("+"))
-		rpn.add();
-	    if (getNext.equals ("-"))
-		rpn.subtract();
-	    if (getNext.equals ("*"))
-		rpn.multiply ();
-	    if (getNext.equals ("/"))
-		rpn.divide();
-	    else {
-		double num = Double.parseDouble(getNext);
-		stack.push (num);
-	    }
-	}
     }
 }

@@ -1,0 +1,29 @@
+public class BST {
+    private Node root;
+
+    public BST() {
+        root = null;
+    }
+    public BST (int n) {
+	root = new Node (n);
+    }
+
+    public void insert (int n) {
+	Node tmp = root;
+	Node pig = tmp;
+	while (tmp != null) {
+	    pig = tmp;
+	    if (n > tmp.getData())
+		tmp = tmp.getRight();
+	    else 
+		tmp = tmp.getLeft();
+	}
+	Node x = new Node (n);
+	if (n > pig.getData())
+	    pig.setRight(x);
+	else
+	    pig.setLeft(x);
+    }
+
+
+}

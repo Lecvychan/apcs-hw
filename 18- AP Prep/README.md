@@ -1,0 +1,1 @@
+I studied my notes and did some review problems for Calculus BC.

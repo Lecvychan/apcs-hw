@@ -51,6 +51,17 @@ public class BST {
 	else
 	    return null;
     }
+
+    public void traverse (Node n) {
+	if (n == null)
+	    System.out.print ("");
+	else {
+	    System.out.println (n.getData());
+	    traverse (n.getLeft());
+	    traverse (n.getRight());
+	}
+    }
+
  
     public void delete (int n){
 	Node tmp = root;

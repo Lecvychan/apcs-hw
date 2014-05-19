@@ -1,0 +1,21 @@
+import java.util.PriorityQueue;
+
+public class MedianHeap {
+
+    private PriorityQueue<Integer> min, max;
+
+    public MedianHeap () {
+	min = new PriorityQueue<Integer> ();
+	max = new PriorityQueue<Integer> (11,Collections.reverseOrder());
+	//taken from Norman's code
+    }
+
+    public void add (int n) {
+	if (min.size() <= max.size())
+	    min.add (n);
+	else
+	    max.add(n);
+    }
+public 
+
+

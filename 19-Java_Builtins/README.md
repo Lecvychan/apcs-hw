@@ -1,5 +1,5 @@
 
-What is the difference between the HashMap and HashSet (or the TreeMap and TreeSet) from a use point of view.
+1.What is the difference between the HashMap and HashSet (or the TreeMap and TreeSet) from a use point of view.
 
      Hashset
       -implements the Set interface.
@@ -13,7 +13,14 @@ What is the difference between the HashMap and HashSet (or the TreeMap and TreeS
        -faster than Hashset because unique key is used to access objects.
        -Put method is used to add element in map.
 
-Internally, how is a HashMap implemented?
+2a.Internally, how is a HashMap implemented?
 
-      Hashmap is implemented as a hash table, and there is no ordering on keys or values.
+      Hashmap is implemented as an array whose elements point to a linked list.
+
+2b.Internally, how is the TreeMap implemented?
 	    	    
+      TreeMap is internally implemented as a black-red tree.
+
+3.HashMap seems to be faster than TreeMap.
+
+4.PriorityQueue.
